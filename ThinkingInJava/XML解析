@@ -1,1 +1,17 @@
 
+一、 java 解析xml常见的四种方式
+  1、Dom 解析
+  Dom 文档对象模型，DOM是针对HTML文档、XML等文档的一套API，用来访问或操作HTML文档、XHTML文档、XML文档中的节点元素。
+解析器读入整个文档，然后构建一个驻留内存的树结构， 然后代码就可以使用 DOM 接口来操作这个树结构。
+  优点：整个文档树在内存中，便于操作；支持删除、修改、重新排列等多种功能；
+  缺点：将整个文档调入内存（包括无用的节点），浪费时间和空间，所以dom不适合于包含大量数据的xml解析；
+  使用场合：一旦解析了文档还需多次访问这些数据；硬件资源充足（内存、CPU）。
+  http://www.cnblogs.com/mengdd/archive/2013/06/01/3113291.html
+  2、SAX解析
+  
+  http://blog.chinaunix.net/uid-354915-id-3877243.html
+二、 XmlPath
+
+三、 Json与xml比较
+
+四、 demo：简单还原Spring iop 的功能
