@@ -40,19 +40,19 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
 - "/"：表示选择根节点
 - "//"：表示选择任意位置的某个节点
 - "@"： 表示选择某个属性
-  例子：
-  ’
-  <bookstore>
-    <book>
-      <title lang="eng">Harry Potter</title>
-      <price>29.99</price>
-    </book>
-    <book>
-      <title lang="eng">Learning XML</title>
-      <price>39.95</price>
-    </book>
-  </bookstore>
-‘
+  例子：  
+  ```XML
+  <bookstore>   
+    <book>      
+      <title lang="eng">Harry Potter</title>       
+      <price>29.99</price>    
+    </book>     
+    <book>   
+      <title lang="eng">Learning XML</title>   
+      <price>39.95</price>   
+    </book>   
+  </bookstore    
+  ```   
   http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html
   http://www.cnblogs.com/zhangfei/p/4283930.html   
 
