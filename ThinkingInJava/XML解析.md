@@ -15,8 +15,7 @@
 &emsp;详情请参见[Sax解析XML](http://blog.csdn.net/wangkuifeng0118/article/details/7305068)  
 ### 3、JDom  
 &emsp;DOM的目的是成为Java特定文档模型，它简化与XML的交互并且比使用DOM实现更快，DOM与DOM主要有两方面不同。首先，JDOM仅使用具体类而不使用接口。这在某些方面简化了API，但是也限制了灵活性。第二，API大量使用了Collections类，简化了那些已经熟悉这些类的Java开发者的使用
-  http://blog.csdn.net/qh_java/article/details/50499973
-  http://blog.chinaunix.net/uid-354915-id-3877243.html
+ 
 ### 4、Dom4J
 &emsp;它合并了许多超出基本XML文档表示的功能，包括集成的XPath支持、XML Schema支持以及用于大文档或流化文档的基于事件的处理。
 它还提供了构建文档表示的选项，它通过DOM4J API和标准DOM接口具有并行访问功能。   
@@ -25,7 +24,8 @@
 &emsp;有很好的性能。
 &emsp;大量使用了接口，API较为复杂。  
 详情请参见[java使用dom4j解析XMl](http://blog.csdn.net/yyywyr/article/details/38359049)
-
+  [四种解析优缺点](http://blog.csdn.net/qh_java/article/details/50499973)
+  [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)
 ## 二、XPath  
 xpath就是选择XML文件中节点的方法  
 - element（元素节点） 
@@ -72,11 +72,11 @@ bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素�
 
 详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)
           [java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)
-  http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html
+  [Xpath 详解](http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html)
    
 
 ## 三、Json与xml比较
-  
+  [Xml与json比较](http://www.cnblogs.com/SanMaoSpace/p/3139186.html)
 ## 四、demo:解析book.xml
 book.xml 如下：
 ```
