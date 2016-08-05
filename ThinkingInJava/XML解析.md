@@ -41,27 +41,83 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
 - "//"：表示选择任意位置的某个节点
 - "@"： 表示选择某个属性
   例子：  
- <bookstore>
-   <book>      
-     <title lang="eng">Harry Potter</title>       
-     <price>29.99</price>    
-   </book>     
-   <book>   
-     <title lang="eng">Learning XML</title>   
-     <price>39.95</price>   
-     </book>   
- </bookstore > 
+```
+<bookstore>    
+
+  <book>     
   
+     <title lang="eng">Harry Potter</title>     
+     
+     <price>29.99</price>      
+     
+  </book>       
+  
+  <book>     
+  
+     <title lang="eng">Learning XML</title>    
+     
+     <price>39.95</price>   
+     
+     </book>    
+     
+  </bookstore >  
+  
+ ``` 
 /bookstore ：选取根节点bookstore，这是绝对路径写法。  
 bookstore/book ：选取所有属于 bookstore 的子元素的 book元素，这是相对路径写法。   
 //book ：选择所有 book 子元素，而不管它们在文档中的位置。  
 bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素，而不管它们位于 bookstore 之下的什么位置。  
 /bookstore/book[1] ：表示选择bookstore的第一个book子元素。  
-//title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点   
+//title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点  
 
+详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)
+          [java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)
   http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html
-  http://www.cnblogs.com/zhangfei/p/4283930.html   
+   
 
 ## 三、Json与xml比较
   
-## 四、demo：简单还原Spring iop 的功能
+## 四、demo:解析book.xml
+### Sax解析
+```   
+  public class SAXParse  implements ParseXml{  
+    private List<Book> list;  
+    private BeanListHandler handler;   
+    public SAXParse(String filePath) throws Exception{  
+      SAXParserFactory factory = SAXParserFactory.newInstance();//创建解析工厂     
+      SAXParser parser = factory.newSAXParser();//创建解析器
+      XMLReader reader = parser.getXMLReader(); //得到读取器  
+      handler = new BeanListHandler();
+      reader.setContentHandler(handler);
+      reader.parse(filePath); 
+    }
+    public List<Book> getBooks(){
+      list = handler,getBooks();
+      return list;
+    }
+ }   
+```
+### Jdom解析
+```
+  public class Jdom implements ParseXML{
+    private Element root;
+    List<Book> list = new ArrsyList<Book>();
+    public Jdom(String filePath) throws Exception {
+      SAXBuilder builder = new SAXBuilder();
+      InputStream file = new FileInputStream(filePath);
+      Document doc = builder.build(file);
+      root = doc.getRootElement();
+    }
+    public List<Book> getBooks(){
+      List<Element> list1 = root.getChildren("书");
+      Book book;
+      for(Element e:list1){
+        book = new Book();
+        book.setName(e.getChildText("书名"));
+        book.setAuthor(e.getChildText("作者"));
+        book.setPrice(e.getChildTest("售价"));
+        list.add(book);
+      }
+      return list;
+    }
+  }
