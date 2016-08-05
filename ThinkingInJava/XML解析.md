@@ -41,18 +41,24 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
 - "//"：表示选择任意位置的某个节点
 - "@"： 表示选择某个属性
   例子：  
-  ```XML
-  <bookstore>   
-    <book>      
-      <title lang="eng">Harry Potter</title>       
-      <price>29.99</price>    
-    </book>     
-    <book>   
-      <title lang="eng">Learning XML</title>   
-      <price>39.95</price>   
-    </book>   
-  </bookstore    
-  ```   
+ <bookstore>
+   <book>      
+     <title lang="eng">Harry Potter</title>       
+     <price>29.99</price>    
+   </book>     
+   <book>   
+     <title lang="eng">Learning XML</title>   
+     <price>39.95</price>   
+     </book>   
+ </bookstore > 
+  
+/bookstore ：选取根节点bookstore，这是绝对路径写法。  
+bookstore/book ：选取所有属于 bookstore 的子元素的 book元素，这是相对路径写法。   
+//book ：选择所有 book 子元素，而不管它们在文档中的位置。  
+bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素，而不管它们位于 bookstore 之下的什么位置。  
+/bookstore/book[1] ：表示选择bookstore的第一个book子元素。  
+//title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点   
+
   http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html
   http://www.cnblogs.com/zhangfei/p/4283930.html   
 
