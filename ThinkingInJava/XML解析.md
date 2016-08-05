@@ -78,6 +78,21 @@ bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素�
 ## 三、Json与xml比较
   
 ## 四、demo:解析book.xml
+book.xml 如下：
+```
+    <书架 id =“root”>  
+      <书 id = "book1">  
+        <书名 id="1">think in java</书名>  
+        <作者 id="author">李狗蛋</作者>  
+        <售价>89</售价>  
+      </书>
+      <书 >  
+        <书名 id="2">java core</书名>  
+        <作者 >李狗蛋</作者>  
+        <售价>78</售价>  
+      </书>  
+    </书架>
+```
 ### Sax解析
 ```   
   public class SAXParse  implements ParseXml{  
@@ -121,3 +136,100 @@ bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素�
       return list;
     }
   }
+```
+### Dom4j解析
+```
+  public class Dom4J implements ParseXML{
+  
+    private Element rootElmt;
+    List<Book> list = new ArrayList<Book>()
+    Book book;
+    
+    public Dom4J(String filePath) throws Exception{
+      File file = new File(filePath);
+      SAXReader reader = new SAXReader();
+      Document doc = reader.read(file);
+      rootElmt = doc.getRootElement();
+    }
+    public List<Book> getBooks(Element node){
+      if(node.getName().equals("书")){
+        book = null;
+        book = new Book();
+      }
+      if(node.getName().equals("书名")){
+        book.setName(node.getText());
+      }
+      if(node.getName().equals("作者")){
+        book.setAuthor(node.getText());
+      }
+      if(node.getName().equals("售价")){
+        book.setPrice(node.getText());
+        lost.add(book);
+      }
+      Iterator<Element> iterator = node.elementIterator();
+      while(iterator.hasNext()){
+        Element node2 = iterator.next();
+        getBooks(node2);
+      }
+      return list;
+    }
+    public List<Book> getBooks(){
+     return getBooks(rootElmt); 
+    }
+  }
+```
+### 测试类
+```
+  
+  public static void main(String[] args) {
+    ParsrXml parseXml = new Dom4J("src/main/book.xml");
+    List<Book> list = parseXml.getBooks();
+    Book book;
+    for(int i=0 ; i<list.size() ;i++){
+      book = new Book();
+      book = (Book)list.get(i);
+      System.out.println(book);
+    }
+  }
+```
+### XPath  应用
+
+```
+  public class XPath{
+    private String filePath;
+    private Document documentl
+    
+    public XPath(String filePath){
+      this.filePath =filePath;
+      this.load(filePath);
+    }
+    private void load(String filePath){
+      File file = new File(filePath);
+      if(file.exists()){
+        SAXReader saxReader = new SAXReader();
+        try {
+          document = saxReader.read(file);
+        }catch(Exception e){
+          e.printStackTrace();
+        }
+      }
+    }
+    public List<Element> getElementObject(String elementPath){
+      return document.selectNodes(elementPath);
+    }
+    public String getValues(){
+      List<Elements> elements = getElementObject(elementPath);
+      String name ="";
+      for(Element element : elements){
+        name = element.getName() + " : " +element.getText()+"\n";
+      }
+      return name ;
+    }
+    public static void main(String[] args){
+      XPath xPath = new XPath("src/main/book.xml");
+      String value = xPath.getValues("//书[售价>80]/书名");
+      String value2 = xPath.getValues("书架/书/售价[.>80]");
+      String value3 = xPath.getValues("书架/书/*[@id=’2‘]")；
+    }
+  }
+```
