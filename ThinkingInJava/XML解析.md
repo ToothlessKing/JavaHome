@@ -95,7 +95,7 @@ book.xml 如下：
 ```
 ### Sax解析
 ```   
-  public class SAXParse  implements ParseXml{  
+  public class SAXParse  implements ParseXml{ //ParseXml是自己定义的接口 
     private List<Book> list;  
     private BeanListHandler handler;   
     public SAXParse(String filePath) throws Exception{  
