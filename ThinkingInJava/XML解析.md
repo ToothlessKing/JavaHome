@@ -23,9 +23,9 @@
 &emsp;支持XPath。
 &emsp;有很好的性能。
 &emsp;大量使用了接口，API较为复杂。  
-详情请参见[java使用dom4j解析XMl](http://blog.csdn.net/yyywyr/article/details/38359049)  
-  [四种解析优缺点](http://blog.csdn.net/qh_java/article/details/50499973)  
-  [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)  
+详情请参见[java使用dom4j解析XMl](http://blog.csdn.net/yyywyr/article/details/38359049)、
+  [四种解析优缺点](http://blog.csdn.net/qh_java/article/details/50499973)、
+  [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)
 ## 二、XPath  
 xpath就是选择XML文件中节点的方法  
 - element（元素节点） 
@@ -70,8 +70,8 @@ bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素�
 /bookstore/book[1] ：表示选择bookstore的第一个book子元素。  
 //title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点  
 
-详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)  
-          [java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)  
+详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)、
+          [java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)、
   [Xpath 详解](http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html)  
    
 
