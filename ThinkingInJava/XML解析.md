@@ -26,7 +26,7 @@
 &emsp;大量使用了接口，API较为复杂。  
 详情请参见[java使用dom4j解析XMl](http://blog.csdn.net/yyywyr/article/details/38359049)
 
-## 二、XPath
+## 二、XPath  
 xpath就是选择XML文件中节点的方法  
 - element（元素节点） 
 - attribute（属性节点） 
@@ -40,8 +40,22 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
 - "/"：表示选择根节点
 - "//"：表示选择任意位置的某个节点
 - "@"： 表示选择某个属性
+  例子：
+  ’
+  <bookstore>
+    <book>
+      <title lang="eng">Harry Potter</title>
+      <price>29.99</price>
+    </book>
+    <book>
+      <title lang="eng">Learning XML</title>
+      <price>39.95</price>
+    </book>
+  </bookstore>
+‘
   http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html
-  http://www.cnblogs.com/zhangfei/p/4283930.html
+  http://www.cnblogs.com/zhangfei/p/4283930.html   
+
 ## 三、Json与xml比较
   
 ## 四、demo：简单还原Spring iop 的功能
