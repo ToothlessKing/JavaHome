@@ -102,31 +102,32 @@ book.xml 如下：
       SAXParserFactory factory = SAXParserFactory.newInstance();//创建解析工厂     
       SAXParser parser = factory.newSAXParser();//创建解析器
       XMLReader reader = parser.getXMLReader(); //得到读取器  
-      handler = new BeanListHandler();
-      reader.setContentHandler(handler);
+      handler = new BeanListHandler();//实例化DefaultHandler对象 
+      reader.setContentHandler(handler);//设置处理
       reader.parse(filePath); 
     }
     public List<Book> getBooks(){
-      list = handler,getBooks();
+      list = handler.getBooks();
       return list;
     }
  }   
 ```
 ### Jdom解析
+需要jdom.jar
 ```
   public class Jdom implements ParseXML{
     private Element root;
     List<Book> list = new ArrsyList<Book>();
     public Jdom(String filePath) throws Exception {
-      SAXBuilder builder = new SAXBuilder();
-      InputStream file = new FileInputStream(filePath);
-      Document doc = builder.build(file);
-      root = doc.getRootElement();
+      SAXBuilder builder = new SAXBuilder();//创建解析器
+      InputStream file = new FileInputStream(filePath);//创建输入流
+      Document doc = builder.build(file);//获取Document对象，以后的操作都是对Document对象进行操作的
+      root = doc.getRootElement();//得到根节点
     }
     public List<Book> getBooks(){
-      List<Element> list1 = root.getChildren("书");
+      List<Element> list1 = root.getChildren("书");//获取节点名称为“书”的节点集合
       Book book;
-      for(Element e:list1){
+      for(Element e:list1){//遍历节点
         book = new Book();
         book.setName(e.getChildText("书名"));
         book.setAuthor(e.getChildText("作者"));
@@ -138,6 +139,7 @@ book.xml 如下：
   }
 ```
 ### Dom4j解析
+需要dom4j.jar
 ```
   public class Dom4J implements ParseXML{
   
@@ -147,9 +149,9 @@ book.xml 如下：
     
     public Dom4J(String filePath) throws Exception{
       File file = new File(filePath);
-      SAXReader reader = new SAXReader();
-      Document doc = reader.read(file);
-      rootElmt = doc.getRootElement();
+      SAXReader reader = new SAXReader();//创建SAXReader对象
+      Document doc = reader.read(file); //读取文件 转换成Document  
+      rootElmt = doc.getRootElement();//获取根节点元素对象
     }
     public List<Book> getBooks(Element node){
       if(node.getName().equals("书")){
@@ -192,8 +194,8 @@ book.xml 如下：
     }
   }
 ```
-### XPath  应用
-
+### XPath  应用(需要)
+需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
 ```
   public class XPath{
     private String filePath;
@@ -206,9 +208,9 @@ book.xml 如下：
     private void load(String filePath){
       File file = new File(filePath);
       if(file.exists()){
-        SAXReader saxReader = new SAXReader();
+        SAXReader saxReader = new SAXReader();//创建SAXReader对象
         try {
-          document = saxReader.read(file);
+          document = saxReader.read(file);//读取文件 转换成Document 
         }catch(Exception e){
           e.printStackTrace();
         }
