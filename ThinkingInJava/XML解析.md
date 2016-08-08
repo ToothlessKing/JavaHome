@@ -28,51 +28,41 @@
   [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)
 ## 二、XPath  
 xpath就是选择XML文件中节点的方法  
-- element（元素节点） 
-- attribute（属性节点） 
-- text （文本节点）  
-- namespace （名称空间节点）  
-- processing-instruction （处理命令节点）  
-- comment （注释节点）  
-- root （根节点）  
+> - element（元素节点） 
+> - attribute（属性节点） 
+> - text （文本节点）  
+> - namespace （名称空间节点）  
+> - processing-instruction （处理命令节点）  
+> - comment （注释节点）  
+> - root （根节点）  
 xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝对路径（“/”起首，后面跟着根节点），也可以时相对路径，基本规则如下：
-- nodename（节点名称）：表示选择该节点的所有子节点
-- "/"：表示选择根节点
-- "//"：表示选择任意位置的某个节点
-- "@"： 表示选择某个属性
-  例子：  
+> - nodename（节点名称）：表示选择该节点的所有子节点
+> - "/"：表示选择根节点
+> - "//"：表示选择任意位置的某个节点
+> - "@"： 表示选择某个属性
+  例子：
+
 ```
-<bookstore>    
-
-  <book>     
-  
-     <title lang="eng">Harry Potter</title>     
-     
-     <price>29.99</price>      
-     
-  </book>       
-  
-  <book>     
-  
-     <title lang="eng">Learning XML</title>    
-     
-     <price>39.95</price>   
-     
-     </book>    
-     
-  </bookstore >  
-  
+<bookstore>
+  <book>
+     <title lang="eng">Harry Potter</title>
+     <price>29.99</price>
+  </book>
+  <book> 
+     <title lang="eng">Learning XML</title>
+     <price>39.95</price>
+     </book>
+  </bookstore >
  ``` 
-/bookstore ：选取根节点bookstore，这是绝对路径写法。  
-bookstore/book ：选取所有属于 bookstore 的子元素的 book元素，这是相对路径写法。   
-//book ：选择所有 book 子元素，而不管它们在文档中的位置。  
-bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素，而不管它们位于 bookstore 之下的什么位置。  
-/bookstore/book[1] ：表示选择bookstore的第一个book子元素。  
-//title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点  
+ 
+> /bookstore ：选取根节点bookstore，这是绝对路径写法。  
+> bookstore/book ：选取所有属于 bookstore 的子元素的 book元素，这是相对路径写法。   
+> //book ：选择所有 book 子元素，而不管它们在文档中的位置。  
+> bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素，而不管它们位于 bookstore 之下的什么位置。  
+> /bookstore/book[1] ：表示选择bookstore的第一个book子元素。  
+> //title[@lang='eng'] ：表示选择所有lang属性的值等于"eng"的title节点  
 
-详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)、
-          [java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)、
-  [Xpath 详解](http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html)  
+详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)、[java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)、[Xpath 详解](http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html)  
    
 
 ## 三、Json与xml比较
