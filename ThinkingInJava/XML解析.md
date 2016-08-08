@@ -155,7 +155,7 @@ book.xml 如下：
 ### Jdom解析
 需要jdom.jar
 
-```
+```java
   public class Jdom implements ParseXML{
     private Element root;
     List<Book> list = new ArrsyList<Book>();
@@ -183,7 +183,7 @@ book.xml 如下：
 ### Dom4j解析
 需要dom4j.jar
 
-```
+```java
   public class Dom4J implements ParseXML{
   
     private Element rootElmt;
