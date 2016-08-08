@@ -1,5 +1,8 @@
+#XML解析
+======
 
 ## 一、java 解析xml常见的四种方式
+-------
 
 ### 1、Dom 解析
 &emsp;Dom（文档对象模型），DOM是针对HTML文档、XML等文档的一套API，用来访问或操作HTML文档、XHTML文档、XML文档中的节点元素。
@@ -28,7 +31,9 @@
 详情请参见[java使用dom4j解析XMl](http://blog.csdn.net/yyywyr/article/details/38359049)、
   [四种解析优缺点](http://blog.csdn.net/qh_java/article/details/50499973)、
   [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)
+  
 ## 二、XPath  
+--------
 xpath就是选择XML文件中节点的方法  
 > - element（元素节点） 
 > - attribute（属性节点） 
@@ -68,8 +73,10 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
    
 
 ## 三、Json与xml比较
+-------
   [Xml与json比较](http://www.cnblogs.com/SanMaoSpace/p/3139186.html)
 ## 四、demo:解析book.xml
+-------
 book.xml 如下：
 
 ```XML
