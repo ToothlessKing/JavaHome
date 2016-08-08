@@ -94,7 +94,7 @@ book.xml 如下：
     </书架>
 ```
 
-### Sax解析
+#### Sax解析
 [DefaultHandler方法](http://blog.csdn.net/sir_zeng/article/details/17710013)
 
 ```java
@@ -159,7 +159,7 @@ book.xml 如下：
  }
 ```
 
-### Jdom解析
+#### Jdom解析
 需要jdom.jar
 
 ```java
@@ -187,7 +187,7 @@ book.xml 如下：
   }
 ```
 
-### Dom4j解析
+#### Dom4j解析
 需要dom4j.jar
 
 ```java
@@ -231,7 +231,7 @@ book.xml 如下：
   }
 ```
 
-### 测试类
+#### 测试类
 
 ```java
   public static void main(String[] args) {
@@ -246,7 +246,7 @@ book.xml 如下：
   }
 ```
 
-### XPath  应用(需要)
+#### XPath  应用(需要)
 需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
 
 ```java
