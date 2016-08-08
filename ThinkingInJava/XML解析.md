@@ -94,6 +94,7 @@ book.xml 如下：
     </书架>
 ```
 ### Sax解析
+[DefaultHandler方法](http://blog.csdn.net/sir_zeng/article/details/17710013)
 ```   
   public class SAXParse  implements ParseXml{ //ParseXml是自己定义的接口 
     private List<Book> list;  
@@ -111,6 +112,49 @@ book.xml 如下：
       return list;
     }
  }   
+ public class BeanListHandler extends DefaultHandler{
+   ArrayList<Book> list = new ArrayList<Book>();
+   private String currentTag;
+   private Book book;
+   
+  @Override 
+  public void startElement (String uri,String localname,String qname ,Attributes attributes) throws SAXException{
+  
+   currentTag = qName;
+   if("书".equalsIgnoreCase(currentTag)){
+     book = new Book();
+   }
+  }
+  @Override 
+  public void characters(char ch[],int start,int length) throws SAXException{
+   
+   if("书名".equals(currentTag)){
+     String  name = new String(ch,start,length);
+     book.setName(name);
+   }
+   if("作者".equals(currentTag)){
+     String author = new String(ch.start,length);
+     book.setAuthor(author);
+   }
+   if("售价".equals(currentTag)){
+     String price = new String(ch,start,length);
+     book.setPrice(price);
+   }
+  }
+  
+  @Override
+  public void endElement(String uri,String localName,String qName) throws SAXException{
+   if("书".equals(qName)){
+     list.add(book);
+     book = null;
+   }
+   currentTag = null;
+  }
+  
+  public ArrayList<Book> getBooks(){
+   return list;
+  }
+ }
 ```
 ### Jdom解析
 需要jdom.jar
