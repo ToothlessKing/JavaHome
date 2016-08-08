@@ -34,20 +34,22 @@
   
 ## 二、XPath  
 --------
-xpath就是选择XML文件中节点的方法  
+xpath就是选择XML文件中节点的方法,节点分为以下几类：
 > - element（元素节点） 
 > - attribute（属性节点） 
 > - text （文本节点）  
 > - namespace （名称空间节点）  
 > - processing-instruction （处理命令节点）  
 > - comment （注释节点）  
-> - root （根节点）  
+> - root （根节点
+
 xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝对路径（“/”起首，后面跟着根节点），也可以时相对路径，基本规则如下：
 > - nodename（节点名称）：表示选择该节点的所有子节点
 > - "/"：表示选择根节点
 > - "//"：表示选择任意位置的某个节点
 > - "@"： 表示选择某个属性
-  例子：
+
+例子：
 
 ```XML
 <bookstore>
@@ -60,9 +62,10 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
      <price>39.95</price>
      </book>
   </bookstore >
+  
  ``` 
- 
-> /bookstore ：选取根节点bookstore，这是绝对路径写法。  
+XPath相关语法介绍：
+> / ：选取根节点bookstore，这是绝对路径写法。  
 > bookstore/book ：选取所有属于 bookstore 的子元素的 book元素，这是相对路径写法。   
 > //book ：选择所有 book 子元素，而不管它们在文档中的位置。  
 > bookstore//book ：选择所有属于 bookstore 元素的后代的 book 元素，而不管它们位于 bookstore 之下的什么位置。  
@@ -101,12 +104,17 @@ book.xml 如下：
   public class SAXParse  implements ParseXml{ //ParseXml是自己定义的接口 
     private List<Book> list;  
     private BeanListHandler handler;   
-    public SAXParse(String filePath) throws Exception{  
-      SAXParserFactory factory = SAXParserFactory.newInstance();//创建解析工厂     
-      SAXParser parser = factory.newSAXParser();//创建解析器
-      XMLReader reader = parser.getXMLReader(); //得到读取器  
-      handler = new BeanListHandler();//实例化DefaultHandler对象 
-      reader.setContentHandler(handler);//设置处理
+    public SAXParse(String filePath) throws Exception{
+      //创建解析工厂 
+      SAXParserFactory factory = SAXParserFactory.newInstance();
+      //创建解析器
+      SAXParser parser = factory.newSAXParser();
+      //得到读取器
+      XMLReader reader = parser.getXMLReader();
+      //实例化DefaultHandler对象
+      handler = new BeanListHandler(); 
+      //设置处理
+      reader.setContentHandler(handler);
       reader.parse(filePath); 
     }
     public List<Book> getBooks(){
@@ -167,15 +175,21 @@ book.xml 如下：
     private Element root;
     List<Book> list = new ArrsyList<Book>();
     public Jdom(String filePath) throws Exception {
-      SAXBuilder builder = new SAXBuilder();//创建解析器
-      InputStream file = new FileInputStream(filePath);//创建输入流
-      Document doc = builder.build(file);//获取Document对象，以后的操作都是对Document对象进行操作的
-      root = doc.getRootElement();//得到根节点
+      //创建解析器
+      SAXBuilder builder = new SAXBuilder();
+      //创建输入流
+      InputStream file = new FileInputStream(filePath);
+      //获取Document对象，以后的操作都是对Document对象进行操作的
+      Document doc = builder.build(file);
+      //得到根节点
+      root = doc.getRootElement();
     }
     public List<Book> getBooks(){
-      List<Element> list1 = root.getChildren("书");//获取节点名称为“书”的节点集合
+      //获取节点名称为“书”的节点集合
+      List<Element> list1 = root.getChildren("书");
       Book book;
-      for(Element e:list1){//遍历节点
+      //遍历节点
+      for(Element e:list1){
         book = new Book();
         book.setName(e.getChildText("书名"));
         book.setAuthor(e.getChildText("作者"));
@@ -199,9 +213,12 @@ book.xml 如下：
     
     public Dom4J(String filePath) throws Exception{
       File file = new File(filePath);
-      SAXReader reader = new SAXReader();//创建SAXReader对象
-      Document doc = reader.read(file); //读取文件 转换成Document  
-      rootElmt = doc.getRootElement();//获取根节点元素对象
+      //创建SAXReader对象
+      SAXReader reader = new SAXReader();
+      //读取文件 转换成Document
+      Document doc = reader.read(file);
+      //获取根节点元素对象
+      rootElmt = doc.getRootElement();
     }
     public List<Book> getBooks(Element node){
       if(node.getName().equals("书")){
@@ -261,9 +278,11 @@ book.xml 如下：
     private void load(String filePath){
       File file = new File(filePath);
       if(file.exists()){
-        SAXReader saxReader = new SAXReader();//创建SAXReader对象
+        //创建SAXReader对象
+        SAXReader saxReader = new SAXReader();
         try {
-          document = saxReader.read(file);//读取文件 转换成Document 
+          //读取文件 转换成Document
+          document = saxReader.read(file); 
         }catch(Exception e){
           e.printStackTrace();
         }
@@ -282,9 +301,12 @@ book.xml 如下：
     }
     public static void main(String[] args){
       XPath xPath = new XPath("src/main/book.xml");
+      //查找售价大于80的书的书名
       String value = xPath.getValues("//书[售价>80]/书名");
+      //查找书售价大于80的售价
       String value2 = xPath.getValues("书架/书/售价[.>80]");
-      String value3 = xPath.getValues("书架/书/*[@id=’2‘]")；
+      //查找所有id属性为2的节点
+      String value3 = xPath.getValues("书架/书/*[@id='2']")；
     }
   }
 ```
