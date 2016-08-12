@@ -171,9 +171,10 @@ book.xml 如下：
 ```
 
 #### Jdom解析
-需要jdom.jar
 
 ```java
+  //需要jdom.jar
+  import org.jdom.*;
   public class Jdom implements ParseXML{
     private Element root;
     List<Book> list = new ArrsyList<Book>();
@@ -205,9 +206,11 @@ book.xml 如下：
 ```
 
 #### Dom4j解析
-需要dom4j.jar
+
 
 ```java
+  //需要dom4j.jar
+  import org.dom4j.*;
   public class Dom4J implements ParseXML{
   
     private Element rootElmt;
@@ -266,10 +269,12 @@ book.xml 如下：
   }
 ```
 
-#### XPath  应用(需要)
-需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
+#### XPath应用
+
 
 ```java
+  //需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
+  import org.dom4j.*;
   public class XPath{
     private String filePath;
     private Document documentl
