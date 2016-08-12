@@ -1,7 +1,10 @@
 #XML解析
 ======
+## 一、xml基础知识
+--------
+* 详情请参见:[菜鸟教程--Xml基础](http://www.runoob.com/xml/xml-tutorial.html)  
 
-## 一、java 解析xml常见的四种方式
+## 二、java 解析xml常见的四种方式
 -------
 
 ### 1、Dom 解析
@@ -32,7 +35,7 @@
   [四种解析优缺点](http://blog.csdn.net/qh_java/article/details/50499973)、
   [四种解析比较](http://blog.chinaunix.net/uid-354915-id-3877243.html)
   
-## 二、XPath  
+## 三、XPath  
 --------
 xpath就是选择XML文件中节点的方法,节点分为以下几类：
 > - element（元素节点） 
@@ -75,10 +78,10 @@ XPath相关语法介绍：
 详情请参见[Xpath路径表达式](http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html)、[java结合XPATH解析XML](http://www.cnblogs.com/zhangfei/p/4283930.html)、[Xpath 详解](http://www.cnblogs.com/fdszlzl/archive/2009/06/02/1494836.html)  
    
 
-## 三、Json与xml比较
+## 四、Json与xml比较
 -------
   [Xml与json比较](http://www.cnblogs.com/SanMaoSpace/p/3139186.html)
-## 四、demo:解析book.xml
+## 五、demo:解析book.xml
 -------
 book.xml 如下：
 
