@@ -7,7 +7,8 @@
 
 ##### 什么是XML？  
 * XML 指可扩展标记语言（eXtensible Markup Language）。  
-* XML 被设计用来传输和存储数据。  
+* XML 被设计用来传输和存储数据。
+
 ##### XML的语法规则:
 * 所有XML元素都须有关闭标签
 * XML标签对大小写敏感
