@@ -4,13 +4,25 @@
 
 ## 一、xml基础知识
 --------
-> 语法规则：  
-> XML 文档必须有一个根元素  
-> XML 元素都必须有一个关闭标签      
-> XML 标签对大小写敏感  
-> XML 元素必须被正确的嵌套  
-> XML 属性值必须加引号  
 
+##### 什么是XML？  
+* XML 指可扩展标记语言（eXtensible Markup Language）。  
+* XML 被设计用来传输和存储数据。  
+##### XML的语法规则:
+* 所有XML元素都须有关闭标签
+* XML标签对大小写敏感
+* XML必须正确地嵌套
+* XML文档必须有根元素
+* XML的属性值须加引号
+* 实体引用
+```xml
+  <   &lt;  
+  >   &gt;
+  &   &amp;
+  '   &apos;
+  "   &quot;
+  在xml中，只有”<“和"&"是非法的。但用实体引用来代替它是个好习惯  
+```
 * 详情请参见:[菜鸟教程--Xml基础](http://www.runoob.com/xml/xml-tutorial.html)  
 
 ## 二、java 解析xml常见的四种方式
@@ -31,7 +43,7 @@
 * 详情请参见[Sax解析XML](http://blog.csdn.net/wangkuifeng0118/article/details/7305068)  
 
 ### 3、JDom  
-&emsp;DOM的目的是成为Java特定文档模型，它简化与XML的交互并且比使用DOM实现更快，DOM与DOM主要有两方面不同。首先，JDOM仅使用具体类而不使用接口。这在某些方面简化了API，但是也限制了灵活性。第二，API大量使用了Collections类，简化了那些已经熟悉这些类的Java开发者的使用
+&emsp;JDom的目的是成为Java特定文档模型，它简化与XML的交互并且比使用DOM实现更快，JDom与DOM主要有两方面不同。首先，JDOM仅使用具体类而不使用接口。这在某些方面简化了API，但是也限制了灵活性。第二，API大量使用了Collections类，简化了那些已经熟悉这些类的Java开发者的使用
  
 ### 4、Dom4J
 * 它合并了许多超出基本XML文档表示的功能，包括集成的XPath支持、XML Schema支持以及用于大文档或流化文档的基于事件的处理。
@@ -46,16 +58,16 @@
   
 ## 三、XPath  
 --------
-xpath就是选择XML文件中节点的方法,节点分为以下几类：
+<b>xpath就是选择XML文件中节点的方法</b>,节点分为以下几类：
 > - element（元素节点） 
 > - attribute（属性节点） 
 > - text （文本节点）  
 > - namespace （名称空间节点）  
 > - processing-instruction （处理命令节点）  
 > - comment （注释节点）  
-> - root （根节点
+> - root （根节点）
 
-xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝对路径（“/”起首，后面跟着根节点），也可以时相对路径，基本规则如下：
+xpath通过<b>路径表达式（Path Expression）</b>来选择节点。可以是绝对路径（“/”起首，后面跟着根节点），也可以时相对路径，基本规则如下：
 > - nodename（节点名称）：表示选择该节点的所有子节点
 > - "/"：表示选择根节点
 > - "//"：表示选择任意位置的某个节点
@@ -63,7 +75,7 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
 
 例子：
 
-```XML
+```xml
 <bookstore>
   <book>
      <title lang="eng">Harry Potter</title>
@@ -74,7 +86,6 @@ xpath通过"路径表达式"（Path Expression）来选择节点。可以是绝�
      <price>39.95</price>
      </book>
   </bookstore >
-  
  ``` 
 XPath相关语法介绍：
 > / ：选取根节点bookstore，这是绝对路径写法。  
