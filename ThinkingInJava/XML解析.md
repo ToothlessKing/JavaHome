@@ -195,7 +195,9 @@ book.xml 如下：
 #### Jdom解析
 
 ```java
-  //需要jdom.jar
+  /*
+   *需要jdom.jar
+   */
   import org.jdom.*;
   public class Jdom implements ParseXML{
     private Element root;
@@ -231,7 +233,9 @@ book.xml 如下：
 
 
 ```java
-  //需要dom4j.jar
+  /*
+   *需要dom4j.jar
+   */
   import org.dom4j.*;
   public class Dom4J implements ParseXML{
   
@@ -295,7 +299,9 @@ book.xml 如下：
 
 
 ```java
-  //需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
+  /*
+   *需要jaxen.jar、dom4j.jar，因为dom4j支持Xpath，所以使用dom4j进行解析
+   */
   import org.dom4j.*;
   public class XPath{
     private String filePath;
